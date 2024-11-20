@@ -68,12 +68,13 @@
     };
 
     displayManager = {
-      sddm.enable = true;
-      sddm.wayland.enable = true;
+      gdm.enable = true;
+      gdm.wayland = true;
     };
   };
   #programs.hyprland.enable = true;
   programs.fish.enable = true;
+  programs.hyprland.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
