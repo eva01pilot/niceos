@@ -83,6 +83,8 @@
         formatters_by_ft.typescript = ["prettier"];
         formatters_by_ft.javascriptreact = ["prettier"];
         formatters_by_ft.typescriptreact = ["prettier"];
+        formatters_by_ft.rust = [ "rustfmt" ];
+        formatters_by_ft.nix = [ "alejandra" ];
       };
     };
     plugins.lualine.enable = true;
@@ -150,6 +152,9 @@
       enable = true;
 
       servers = {
+        rust-analyzer = {
+          enable = true;
+      };
         nil-ls = {
           enable = true;
         };
