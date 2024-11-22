@@ -10,9 +10,9 @@ in {
         "${picsPath}"
       ];
 
-      wallpapers = [
-        "monitor1,${picsPath}"
-        "DP-1,${picsPath}"
+      wallpaper = [
+        "HDMI-A-4,${picsPath}"
+        "DP-4,${picsPath}"
       ];
     };
   };

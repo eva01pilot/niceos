@@ -12,6 +12,7 @@
     ./waybar/waybar.nix
     ./wofi/wofi.nix
     ./kitty/kitty.nix
+    ./tmux/tmux.nix
     ./nixvim.nix
   ];
   home.username = "ilya";
@@ -54,6 +55,7 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+    d2
     qemu
     direnv
     prettierd

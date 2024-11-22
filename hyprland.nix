@@ -4,7 +4,8 @@
     enable = true; # enable Hyprland
     settings = {
       "$mainMod" = "SUPER";
-      monitor = ",preferred,auto,1";
+      monitor = ["DP-4,preferred,0x0,1" "HDMI-A-4,preferred,1920x0,1" ];
+      workspace = ["DP-4,1" "HDMI-A-4,2"];
       "$terminal" = "kitty";
       "$fileManager" = "dolphin";
       "$menu" = "wofi --show drun";
@@ -98,7 +99,7 @@
       };
       input = {
         kb_layout = "us,ru";
-        kb_options = "grpalt_shift_toggle";
+        kb_options = "grp:alt_shift_toggle";
       };
       gestures = {
         workspace_swipe = false;

@@ -44,11 +44,52 @@
         action = "<CMD>Telescope find_files<CR>";
       }
     ];
+
+    plugins.none-ls = {
+        enable = true;
+        sources.formatting = {
+          alejandra.enable = true;
+          hclfmt.enable = true;
+          just.enable = true;
+          opentofu_fmt.enable = true;
+          prettier.enable = true;
+          # rubyfmt is broken on darwin-based systems
+          rubyfmt.enable = (
+            pkgs.stdenv.hostPlatform.system
+            != "x86_64-darwin"
+            && pkgs.stdenv.hostPlatform.system != "aarch64-darwin"
+          );
+          sqlformat.enable = true;
+          stylua.enable = true;
+          yamlfmt.enable = true;
+        };
+        sources.diagnostics = {
+          trivy.enable = true;
+          yamllint.enable = true;
+        };
+      };
+
+    plugins.conform-nvim = {
+      enable = true;
+      settings = {
+          format_on_save = {
+            lsp_fallback = "fallback";
+            timeout_ms = 500;
+          };
+          notify_on_error = true;
+        formatters_by_ft.javascript = ["prettier"];
+        formatters_by_ft.vue = ["prettier"];
+        formatters_by_ft.astro = ["prettier"];
+        formatters_by_ft.typescript = ["prettier"];
+        formatters_by_ft.javascriptreact = ["prettier"];
+        formatters_by_ft.typescriptreact = ["prettier"];
+      };
+    };
     plugins.lualine.enable = true;
     plugins.telescope.enable = true;
     plugins.treesitter = {
       enable = true;
-
+      ensureInstalled = "all";
       folding = false;
       settings.indent.enable = true;
     };
@@ -109,6 +150,9 @@
       enable = true;
 
       servers = {
+        nil-ls = {
+          enable = true;
+        };
         ts_ls = {
           enable = true;
           filetypes = [
