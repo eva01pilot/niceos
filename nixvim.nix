@@ -154,7 +154,7 @@
           enable = true;
         };
         ts_ls = {
-          enable = false;
+          enable = true;
           filetypes = [
             "javascript"
             "javascriptreact"
@@ -169,7 +169,7 @@
               "typescript" "javascript" "javascriptreact" "typescriptreact" "vue"
           ];
           extraOptions = {
-            initOptions = {
+            init_options = {
               vue = {
                 hybridMode = false;
               };
