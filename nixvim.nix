@@ -43,57 +43,68 @@
         key = "<leader>ff";
         action = "<CMD>Telescope find_files<CR>";
       }
+      {
+        mode = "n";
+        key = "<leader>f";
+        action = "<cmd>lua require('conform').format()<cr>";
+        options = {
+          silent = true;
+          desc = "Format Buffer";
+        };
+      }
     ];
 
     plugins.none-ls = {
-        enable = true;
-        sources.formatting = {
-          alejandra.enable = true;
-          hclfmt.enable = true;
-          just.enable = true;
-          opentofu_fmt.enable = true;
-          prettier.enable = true;
-          # rubyfmt is broken on darwin-based systems
-          rubyfmt.enable = (
-            pkgs.stdenv.hostPlatform.system
-            != "x86_64-darwin"
-            && pkgs.stdenv.hostPlatform.system != "aarch64-darwin"
-          );
-          sqlformat.enable = true;
-          stylua.enable = true;
-          yamlfmt.enable = true;
-        };
-        sources.diagnostics = {
-          trivy.enable = true;
-          yamllint.enable = true;
-        };
+      enable = true;
+      sources.formatting = {
+        alejandra.enable = true;
+        hclfmt.enable = true;
+        just.enable = true;
+        opentofu_fmt.enable = true;
+        prettier.enable = true;
+        # rubyfmt is broken on darwin-based systems
+        rubyfmt.enable = (
+          pkgs.stdenv.hostPlatform.system
+          != "x86_64-darwin"
+          && pkgs.stdenv.hostPlatform.system != "aarch64-darwin"
+        );
+        sqlformat.enable = true;
+        stylua.enable = true;
+        yamlfmt.enable = true;
       };
+      sources.diagnostics = {
+        trivy.enable = true;
+        yamllint.enable = true;
+      };
+    };
 
     plugins.conform-nvim = {
       enable = true;
       settings = {
-          format_on_save = {
-            lsp_fallback = "fallback";
-            timeout_ms = 500;
-          };
-          notify_on_error = true;
+        format_on_save = {
+          lsp_fallback = "fallback";
+          timeout_ms = 500;
+        };
+        notify_on_error = true;
         formatters_by_ft.javascript = ["prettier"];
         formatters_by_ft.vue = ["prettier"];
         formatters_by_ft.astro = ["prettier"];
         formatters_by_ft.typescript = ["prettier"];
         formatters_by_ft.javascriptreact = ["prettier"];
         formatters_by_ft.typescriptreact = ["prettier"];
-        formatters_by_ft.rust = [ "rustfmt" ];
-        formatters_by_ft.nix = [ "alejandra" ];
+        formatters_by_ft.rust = ["rustfmt"];
+        formatters_by_ft.nix = ["alejandra"];
       };
     };
     plugins.lualine.enable = true;
     plugins.telescope.enable = true;
     plugins.treesitter = {
       enable = true;
+      settings.highlight = {
+        enable = true;
+      };
       ensureInstalled = "all";
       folding = false;
-      settings.indent.enable = true;
     };
     plugins.cmp-emoji = {enable = true;};
     plugins.cmp = {
@@ -154,7 +165,7 @@
       servers = {
         rust-analyzer = {
           enable = true;
-      };
+        };
         nil-ls = {
           enable = true;
         };
@@ -171,7 +182,11 @@
           enable = true;
           package = pkgs.vue-language-server;
           filetypes = [
-              "typescript" "javascript" "javascriptreact" "typescriptreact" "vue"
+            "typescript"
+            "javascript"
+            "javascriptreact"
+            "typescriptreact"
+            "vue"
           ];
           extraOptions = {
             init_options = {
