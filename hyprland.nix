@@ -4,7 +4,7 @@
     enable = true; # enable Hyprland
     settings = {
       "$mainMod" = "SUPER";
-      monitor = ["DP-4,preferred,0x0,1" "HDMI-A-4,preferred,1920x0,1" ];
+      monitor = ["DP-4,preferred,0x0,1" "HDMI-A-4,preferred,1920x0,1" ",preferred,highres,highrr, auto" ];
       workspace = ["DP-4,1" "HDMI-A-4,2"];
       "$terminal" = "kitty";
       "$fileManager" = "dolphin";
