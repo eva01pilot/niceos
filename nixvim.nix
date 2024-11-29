@@ -45,6 +45,32 @@
       }
       {
         mode = "n";
+        key = "<C-e>";
+        action = "<CMD>lua require('harpoon.ui').toggle_quick_menu()<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader><Right>";
+        action = "<CMD>lua require('harpoon.ui').nav_next()<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>e";
+        action = "<CMD>Oil<CR>";
+        options.desc = "Oil";
+      }
+      {
+        mode = "n";
+        key = "<leader><Left>";
+        action = "<CMD>lua require('harpoon.ui').nav_prev()<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>a";
+        action = "<CMD>lua require('harpoon.mark').add_file()<CR>";
+      }
+      {
+        mode = "n";
         key = "<leader>f";
         action = "<cmd>lua require('conform').format()<cr>";
         options = {
@@ -53,7 +79,34 @@
         };
       }
     ];
-
+    plugins.harpoon = {
+      enable = true;
+      saveOnToggle = true;
+      saveOnChange = true;
+      enterOnSendcmd = false;
+      markBranch = true;
+    };
+    plugins.mini = {
+      enable = true;
+      modules = {
+        surround = {};
+        indentscope = {
+          symbol = "│";
+          options = {try_as_border = true;};
+        };
+      };
+    };
+    plugins.oil = {
+      enable = true;
+      settings = {
+        columns = [
+          "icons"
+        ];
+        default_file_explorer = true;
+        delete_to_trash = true;
+        skip_confirmation_for_simple_edits = true;
+      };
+    };
     plugins.none-ls = {
       enable = true;
       sources.formatting = {
@@ -161,7 +214,28 @@
     plugins.cmp-cmdline = {enable = false;}; # autocomplete for cmdline
     plugins.lsp = {
       enable = true;
-
+      inlayHints = true;
+      keymaps = {
+        diagnostic = {
+          "gl" = "open_float";
+          "[" = "goto_prev";
+          "]" = "goto_next";
+          "<leader>do" = "setloclist";
+        };
+        lspBuf = {
+          "K" = "hover";
+          "gD" = "declaration";
+          "gd" = "definition";
+          "gr" = "references";
+          "gI" = "implementation";
+          "gy" = "type_definition";
+          "<leader>ca" = "code_action";
+          "<leader>cr" = "rename";
+          "<leader>wl" = "list_workspace_folders";
+          "<leader>wr" = "remove_workspace_folder";
+          "<leader>wa" = "add_workspace_folder";
+        };
+      };
       servers = {
         rust-analyzer = {
           enable = true;
