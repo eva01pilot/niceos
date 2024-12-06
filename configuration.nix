@@ -8,6 +8,7 @@
 }: {
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true;
+  hardware.keyboard.qmk.enable = true;
   services.blueman.enable = true;
 
   # Bootloader.
