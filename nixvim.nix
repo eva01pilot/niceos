@@ -39,6 +39,10 @@
     };
     keymaps = [
       {
+        key = "<CR>";
+        action = "<CR> :noh<CR><CR>";
+      }
+      {
         mode = "n";
         key = "<leader>ff";
         action = "<CMD>Telescope find_files<CR>";
