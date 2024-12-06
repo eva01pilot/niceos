@@ -1,5 +1,5 @@
 let
-  picsPath = builtins.toPath ./pics/gruvbox-light-anime.png;
+  picsPath = builtins.toPath ../pics/gruvbox-light-anime.png;
 in {
   services.hyprpaper = {
     enable = true;
