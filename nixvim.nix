@@ -39,61 +39,129 @@
     };
     keymaps = [
       {
+        key = "<CR>";
+        action = "<CR> :noh<CR><CR>";
+      }
+      {
         mode = "n";
         key = "<leader>ff";
         action = "<CMD>Telescope find_files<CR>";
       }
-    ];
-
-    plugins.none-ls = {
-        enable = true;
-        sources.formatting = {
-          alejandra.enable = true;
-          hclfmt.enable = true;
-          just.enable = true;
-          opentofu_fmt.enable = true;
-          prettier.enable = true;
-          # rubyfmt is broken on darwin-based systems
-          rubyfmt.enable = (
-            pkgs.stdenv.hostPlatform.system
-            != "x86_64-darwin"
-            && pkgs.stdenv.hostPlatform.system != "aarch64-darwin"
-          );
-          sqlformat.enable = true;
-          stylua.enable = true;
-          yamlfmt.enable = true;
+      {
+        mode = "n";
+        key = "<C-e>";
+        action = "<CMD>lua require('harpoon.ui').toggle_quick_menu()<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader><Right>";
+        action = "<CMD>lua require('harpoon.ui').nav_next()<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>e";
+        action = "<CMD>Oil<CR>";
+        options.desc = "Oil";
+      }
+      {
+        mode = "n";
+        key = "<leader><Left>";
+        action = "<CMD>lua require('harpoon.ui').nav_prev()<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>a";
+        action = "<CMD>lua require('harpoon.mark').add_file()<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>f";
+        action = "<cmd>lua require('conform').format()<cr>";
+        options = {
+          silent = true;
+          desc = "Format Buffer";
         };
-        sources.diagnostics = {
-          trivy.enable = true;
-          yamllint.enable = true;
+      }
+    ];
+    plugins.harpoon = {
+      enable = true;
+      saveOnToggle = true;
+      saveOnChange = true;
+      enterOnSendcmd = false;
+      markBranch = true;
+    };
+    plugins.mini = {
+      enable = true;
+      modules = {
+        surround = {};
+        indentscope = {
+          symbol = "│";
+          options = {try_as_border = true;};
         };
       };
+    };
+    plugins.oil = {
+      enable = true;
+      settings = {
+        columns = [
+          "icons"
+        ];
+        default_file_explorer = true;
+        delete_to_trash = true;
+        skip_confirmation_for_simple_edits = true;
+      };
+    };
+    plugins.none-ls = {
+      enable = true;
+      sources.formatting = {
+        alejandra.enable = true;
+        hclfmt.enable = true;
+        just.enable = true;
+        opentofu_fmt.enable = true;
+        prettier.enable = true;
+        # rubyfmt is broken on darwin-based systems
+        rubyfmt.enable = (
+          pkgs.stdenv.hostPlatform.system
+          != "x86_64-darwin"
+          && pkgs.stdenv.hostPlatform.system != "aarch64-darwin"
+        );
+        sqlformat.enable = true;
+        stylua.enable = true;
+        yamlfmt.enable = true;
+      };
+      sources.diagnostics = {
+        trivy.enable = true;
+        yamllint.enable = true;
+      };
+    };
 
     plugins.conform-nvim = {
       enable = true;
       settings = {
-          format_on_save = {
-            lsp_fallback = "fallback";
-            timeout_ms = 500;
-          };
-          notify_on_error = true;
+        format_on_save = {
+          lsp_fallback = "fallback";
+          timeout_ms = 500;
+        };
+        notify_on_error = true;
         formatters_by_ft.javascript = ["prettier"];
         formatters_by_ft.vue = ["prettier"];
         formatters_by_ft.astro = ["prettier"];
         formatters_by_ft.typescript = ["prettier"];
         formatters_by_ft.javascriptreact = ["prettier"];
         formatters_by_ft.typescriptreact = ["prettier"];
-        formatters_by_ft.rust = [ "rustfmt" ];
-        formatters_by_ft.nix = [ "alejandra" ];
+        formatters_by_ft.rust = ["rustfmt"];
+        formatters_by_ft.nix = ["alejandra"];
       };
     };
     plugins.lualine.enable = true;
     plugins.telescope.enable = true;
     plugins.treesitter = {
       enable = true;
+      settings.highlight = {
+        enable = true;
+      };
       ensureInstalled = "all";
       folding = false;
-      settings.indent.enable = true;
     };
     plugins.cmp-emoji = {enable = true;};
     plugins.cmp = {
@@ -150,11 +218,32 @@
     plugins.cmp-cmdline = {enable = false;}; # autocomplete for cmdline
     plugins.lsp = {
       enable = true;
-
+      inlayHints = true;
+      keymaps = {
+        diagnostic = {
+          "gl" = "open_float";
+          "[" = "goto_prev";
+          "]" = "goto_next";
+          "<leader>do" = "setloclist";
+        };
+        lspBuf = {
+          "K" = "hover";
+          "gD" = "declaration";
+          "gd" = "definition";
+          "gr" = "references";
+          "gI" = "implementation";
+          "gy" = "type_definition";
+          "<leader>ca" = "code_action";
+          "<leader>cr" = "rename";
+          "<leader>wl" = "list_workspace_folders";
+          "<leader>wr" = "remove_workspace_folder";
+          "<leader>wa" = "add_workspace_folder";
+        };
+      };
       servers = {
         rust-analyzer = {
           enable = true;
-      };
+        };
         nil-ls = {
           enable = true;
         };
@@ -171,7 +260,11 @@
           enable = true;
           package = pkgs.vue-language-server;
           filetypes = [
-              "typescript" "javascript" "javascriptreact" "typescriptreact" "vue"
+            "typescript"
+            "javascript"
+            "javascriptreact"
+            "typescriptreact"
+            "vue"
           ];
           extraOptions = {
             init_options = {

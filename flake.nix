@@ -20,7 +20,7 @@
     ...
   } @ inputs: {
     # Please replace my-nixos with your hostname
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.home = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         # Import the previous configuration.nix we used,
@@ -33,9 +33,27 @@
           home-manager.extraSpecialArgs = {
             inherit inputs;
           };
-          home-manager.users.ilya = import ./home.nix;
+          home-manager.users.ilya = import ./home-home.nix;
         }
-        ./configuration.nix
+        ./configuration-home.nix
+      ];
+    };
+    nixosConfigurations.office = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        # Import the previous configuration.nix we used,
+        # so the old configuration file still takes effect
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "backup";
+          home-manager.extraSpecialArgs = {
+            inherit inputs;
+          };
+          home-manager.users.ilya = import ./home-office.nix;
+        }
+        ./configuration-office.nix
       ];
     };
   };

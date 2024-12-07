@@ -6,13 +6,11 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ./hardware-configuration.nix
-  ];
-
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true;
+  hardware.keyboard.qmk.enable = true;
   services.blueman.enable = true;
+  services.udev.packages = [pkgs.via];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -99,6 +97,7 @@
     ];
     shell = pkgs.fish;
     packages = with pkgs; [
+      via
     ];
   };
 

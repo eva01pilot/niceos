@@ -4,11 +4,8 @@
   inputs,
   ...
 }: {
-  ## TODO please change the username & home directory to your own
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
-    ./hyprland.nix
-    ./hyprpaper.nix
     ./waybar/waybar.nix
     ./wofi/wofi.nix
     ./kitty/kitty.nix
@@ -55,6 +52,9 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+    vial
+    pamixer
+    pavucontrol
     rustlings
     d2
     qemu
