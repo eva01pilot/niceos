@@ -25,7 +25,7 @@
 
   programs.zellij = {
     enable = true;
-    enableFishConfiguration = true;
+    enableFishIntegration = true;
   };
 
   programs.fish = {
