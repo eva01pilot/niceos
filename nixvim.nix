@@ -82,6 +82,15 @@
           desc = "Format Buffer";
         };
       }
+      {
+        mode = "x";
+        key = "<leader>cc";
+        action = "<cmd>CodeSnap<cr>";
+        options = {
+          silent = true;
+          desc = "Format Buffer";
+        };
+      }
     ];
     plugins.harpoon = {
       enable = true;
@@ -99,6 +108,9 @@
           options = {try_as_border = true;};
         };
       };
+    };
+    plugins.codesnap = {
+      enable = true;
     };
     plugins.oil = {
       enable = true;

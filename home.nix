@@ -23,6 +23,11 @@
   programs.neovim.defaultEditor = true;
   wayland.windowManager.hyprland.enable = true; # enable Hyprland
 
+  programs.zellij = {
+    enable = true;
+    enableFishConfiguration = true;
+  };
+
   programs.fish = {
     enable = true;
     shellInit = ''
@@ -52,6 +57,7 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+    zellij
     vial
     pamixer
     pavucontrol
