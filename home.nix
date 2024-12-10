@@ -10,6 +10,7 @@
     ./wofi/wofi.nix
     ./kitty/kitty.nix
     ./tmux/tmux.nix
+    ./zellij/zellij.nix
     ./nixvim.nix
   ];
   home.username = "ilya";
@@ -22,11 +23,6 @@
   };
   programs.neovim.defaultEditor = true;
   wayland.windowManager.hyprland.enable = true; # enable Hyprland
-
-  programs.zellij = {
-    enable = true;
-    enableFishIntegration = true;
-  };
 
   programs.fish = {
     enable = true;
