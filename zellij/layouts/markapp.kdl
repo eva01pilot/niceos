@@ -1,0 +1,8 @@
+layout {
+    tab {
+      pane command = "nvim ."
+    }
+    tab {
+        pane command = "yarn dev"
+    }
+}
