@@ -259,6 +259,9 @@
         nil-ls = {
           enable = true;
         };
+        clangd = {
+          enable = true;
+        };
         ts_ls = {
           enable = true;
           filetypes = [
