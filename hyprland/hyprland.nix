@@ -152,8 +152,8 @@
         "$mainMod, mouse_up, workspace, e-1"
       ];
       bindm = [
-        "$mainMod, mouse272, movewindow"
-        "$mainMod, mouse273, resizewindow"
+        "$mainMod, mouse:272, movewindow"
+        "$mainMod, mouse:273, resizewindow"
       ];
     };
   };
