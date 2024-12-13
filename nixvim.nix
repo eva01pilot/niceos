@@ -262,6 +262,9 @@
         clangd = {
           enable = true;
         };
+        eslint = {
+          enable = true;
+        };
         ts_ls = {
           enable = true;
           filetypes = [
