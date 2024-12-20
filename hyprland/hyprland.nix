@@ -10,14 +10,15 @@
       exec = [
         "ss-local -c /etc/shadowsocks.json"
         "hyprpaper"
+        ''hyprctl setcursor "Capitaine Cursors (Gruvbox)" 16''
       ];
       "exec-once" = [
         "waybar"
       ];
 
       env = [
-        "XCURSOR_SIZE,24"
-        "HYPRCURSOR_SIZE,24"
+        "XCURSOR_SIZE,16"
+        "HYPRCURSOR_SIZE,16"
         "LIBVA_DRIVER_NAME,nvidia"
         "XDG_SESSION_TYPE,wayland"
         "GBM_BACKEND,nvidia-drm"

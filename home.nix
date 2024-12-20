@@ -45,14 +45,16 @@
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Amber";
+    package = pkgs.capitaine-cursors-themed;
+    name = "Gruvbox";
     size = 16;
   };
   # set cursor size and dpi for 4k monitor
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+    nwg-look
+    capitaine-cursors-themed
     libreoffice-qt
     obs-studio
     zellij
