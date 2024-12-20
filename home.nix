@@ -46,7 +46,7 @@
     gtk.enable = true;
     x11.enable = true;
     package = pkgs.capitaine-cursors-themed;
-    name = "Gruvbox";
+    name = "Capitaine Cursors (Gruvbox)";
     size = 16;
   };
   # set cursor size and dpi for 4k monitor
