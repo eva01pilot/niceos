@@ -49,6 +49,11 @@
       }
       {
         mode = "n";
+        key = "<leader>fg";
+        action = "<CMD>Telescope live_grep<CR>";
+      }
+      {
+        mode = "n";
         key = "<C-e>";
         action = "<CMD>lua require('harpoon.ui').toggle_quick_menu()<CR>";
       }
