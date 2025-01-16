@@ -46,6 +46,15 @@
   services.xserver = {
     videoDrivers = ["nvidia"];
   };
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    xorg.libX11
+    xorg.libXcursor
+    xorg.libxcb
+    xorg.libXi
+    libxkbcommon
+  ];
   hardware.opengl = {
     enable = true;
     driSupport32Bit = true;
@@ -69,6 +78,7 @@
       gdm.enable = true;
       gdm.wayland = true;
     };
+    desktopManager.gnome.enable = true;
   };
   #programs.hyprland.enable = true;
   programs.fish.enable = true;

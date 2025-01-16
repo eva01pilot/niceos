@@ -53,6 +53,21 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+    qemu
+    inkscape
+    xorg.libX11
+    xorg.libXcursor
+    xorg.libXrandr
+    xorg.libXi
+    nix-ld
+    fontconfig
+    pkg-config
+    wayland
+    wayland-protocols
+    vulkan-loader
+    mesa
+    vulkan-tools
+    ark
     nwg-look
     capitaine-cursors-themed
     libreoffice-qt
