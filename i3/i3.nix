@@ -12,8 +12,16 @@
     discord = "discord";
     bitwarden = "bitwarden";
     signal = "signal";
-    extra-1 = "1";
-    extra-2 = "2";
+    "1" = "1";
+    "2" = "2";
+    "3" = "3";
+    "4" = "4";
+    "5" = "5";
+    "6" = "6";
+    "7" = "7";
+    "8" = "8";
+    "9" = "9";
+    "0" = "10";
   };
 in {
   xsession = {
@@ -71,15 +79,16 @@ in {
           "${modifier}+l" = "focus right";
 
           # Workspaces
-          "${modifier}+space" = "workspace ${workspace.terminal}";
-          "${modifier}+m" = "workspace ${workspace.code}";
-          "${modifier}+comma" = "workspace ${workspace.browser}";
-          "${modifier}+period" = "workspace ${workspace.bitwarden}";
-          "${modifier}+slash" = "workspace ${workspace.spotify}";
-          "${modifier}+u" = "workspace ${workspace.discord}";
-          "${modifier}+i" = "workspace ${workspace.signal}";
-          "${modifier}+o" = "workspace ${workspace.extra-1}";
-          "${modifier}+p" = "workspace ${workspace.extra-2}";
+          "${modifier}+1" = "workspace ${workspace."1"}";
+          "${modifier}+2" = "workspace ${workspace."2"}";
+          "${modifier}+3" = "workspace ${workspace."3"}";
+          "${modifier}+4" = "workspace ${workspace."4"}";
+          "${modifier}+5" = "workspace ${workspace."5"}";
+          "${modifier}+6" = "workspace ${workspace."6"}";
+          "${modifier}+7" = "workspace ${workspace."7"}";
+          "${modifier}+8" = "workspace ${workspace."8"}";
+          "${modifier}+9" = "workspace ${workspace."9"}";
+          "${modifier}+0" = "workspace ${workspace."0"}";
 
           # Misc
           "${modifier}+q" = "kill";
