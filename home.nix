@@ -42,6 +42,12 @@
     theme.package = pkgs.gruvbox-gtk-theme;
     theme.name = "Gruvbox-Dark";
   };
+  services.gammastep = {
+    enable = true;
+    provider = "manual";
+    latitude = 55.751244;
+    longitude = 37.618423;
+  };
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
@@ -53,6 +59,8 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+    obsidian
+    hiddify-app
     qemu
     inkscape
     xorg.libX11

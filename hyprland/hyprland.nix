@@ -8,7 +8,6 @@
       "$fileManager" = "dolphin";
       "$menu" = "wofi --show drun";
       exec = [
-        "ss-local -c /etc/shadowsocks.json"
         "hyprpaper"
         ''hyprctl setcursor "Capitaine Cursors (Gruvbox)" 16''
       ];
